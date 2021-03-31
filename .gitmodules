@@ -1,0 +1,4 @@
+[submodule "UraniumDeposit/Plugins/Uranium"]
+	path = UraniumDeposit/Plugins/Uranium
+	url = https://github.com/microdee/Uranium.git
+	branch = main
