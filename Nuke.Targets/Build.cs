@@ -7,11 +7,14 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities.Collections;
+using Nuke.Unreal;
 using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
+using static Nuke.Common.Logger;
 
-class Build : NukeBuild
+[CheckBuildProjectConfigurations]
+class Build : PluginTargets
 {
     /// Support plugins are available for:
     ///   - JetBrains ReSharper        https://nuke.build/resharper
@@ -19,26 +22,15 @@ class Build : NukeBuild
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
-    public static int Main () => Execute<Build>(x => x.Compile);
+    public static int Main() => Execute<Build>(x => x.BuildEditor);
 
-    [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+    [Solution] readonly Solution Solution;
+    
+    public override string UnrealVersion { get; set; } = "4.26.0";
+    
+    public override string PluginVersion => "0.1.0";
 
-    Target Clean => _ => _
-        .Before(Restore)
-        .Executes(() =>
-        {
-        });
+    public override AbsolutePath ToPlugin => UnrealPluginsFolder / "Uranium" / "Uranium.uplugin";
 
-    Target Restore => _ => _
-        .Executes(() =>
-        {
-        });
-
-    Target Compile => _ => _
-        .DependsOn(Restore)
-        .Executes(() =>
-        {
-        });
-
+    public override AbsolutePath ToProject => RootDirectory / "UraniumDeposit" / "UraniumDeposit.uproject";
 }

@@ -13,4 +13,8 @@
     <PackageReference Include="Nuke.Common" Version="5.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Nuke.Unreal\src\Nuke.Unreal\Nuke.Unreal.csproj" />
+  </ItemGroup>
+
 </Project>

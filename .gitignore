@@ -78,3 +78,5 @@ DerivedDataCache/*
 Nuke.Targets/bin
 Nuke.Targets/obj/
 .tmp
+/.nuke/temp
+/.nuke/build.schema.json
