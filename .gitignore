@@ -72,3 +72,9 @@ Nuke.Targets/obj/
 .tmp
 /.nuke/temp
 /.nuke/build.schema.json
+
+# Rider
+.idea
+
+# CEF
+CefCache
