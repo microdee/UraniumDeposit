@@ -49,8 +49,11 @@ SourceArt/**/*.png
 SourceArt/**/*.tga
 
 # Binary Files
-Binaries/*
-Plugins/*/Binaries/*
+**/Binaries
+**/DerivedDataCache
+**/Intermediate
+**/Saved
+*_BuiltData.uasset
 
 # Builds
 Build/*
@@ -75,8 +78,13 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Nuke
 Nuke.Targets/bin
 Nuke.Targets/obj/
 .tmp
 /.nuke/temp
 /.nuke/build.schema.json
+
+# Unreal
+Binaries
