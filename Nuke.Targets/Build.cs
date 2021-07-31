@@ -30,4 +30,19 @@ class Build : PluginTargets
     public override string UnrealVersion { get; set; } = "4.26.0";
     
     public override string PluginVersion => "0.1.0";
+
+    public override AbsolutePath TemplatesPath => ToPlugin.Parent / "Templates";
+    
+    public Target NewHandler => _ => _
+        .Description("Create new CEF - Uranium handler pair")
+        .Requires(() => Name)
+        .Executes(() => 
+            Name.ForEach(n => 
+                new HandlerGenerator().Generate(
+                    TemplatesPath,
+                    (AbsolutePath) Environment.CurrentDirectory,
+                    new(n)
+                )
+            )
+        );
 }
