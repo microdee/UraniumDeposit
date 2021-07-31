@@ -2,3 +2,7 @@
 	path = Nuke.Unreal
 	url = https://github.com/microdee/Nuke.Unreal.git
 	branch = main
+[submodule "UraniumDeposit/Plugins/Uranium"]
+	path = UraniumDeposit/Plugins/Uranium
+	url = https://rwone@dev.azure.com/rwone/RW1Shared/_git/Uranium
+	branch = topic/rw1ar-1598-refactor/main
