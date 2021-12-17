@@ -17,13 +17,13 @@ Just run `build.cmd` without arguments. If it complains about missing .NET 5 the
 If you need to develop for a different Unreal Engine version than the default, execute
 
 ```
-> .\build.cmd --target Checkout --unreal-version 4.25
+> .\build.cmd --target Checkout --unreal-version 4.26
 ```
 
 If you have Nuke installed as a global dotnet tool you can avoid `--target` and execute the command from any subfolder:
 
 ```
-> nuke Checkout --unreal-version 4.25
+> nuke Checkout --unreal-version 4.26
 ```
 
 ### Make releases
@@ -43,3 +43,5 @@ or if you want to make that permanent you can edit the `Build` class in `/Nuke.T
 ```CSharp
 public override AbsolutePath CustomEnginePath { get; set; } = RootDirectory.Parent / "MyCustomEngine"
 ```
+
+or make an installed build and register it as a custom engine distribution.

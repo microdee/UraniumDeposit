@@ -38,5 +38,9 @@
 				"Mac"
 			]
 		}
+	],
+	"TargetPlatforms": [
+		"WindowsNoEditor",
+		"Win64"
 	]
 }
