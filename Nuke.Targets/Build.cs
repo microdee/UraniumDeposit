@@ -1,21 +1,7 @@
-using System;
-using System.IO;
-using System.Linq;
-using Nuke.Common;
-using Nuke.Common.CI;
-using Nuke.Common.Execution;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Utilities.Collections;
 using Nuke.Unreal;
-using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
-using static Nuke.Common.Logger;
+using Nuke.Uranium.Cef;
 
-[CheckBuildProjectConfigurations]
-class Build : ProjectTargets
+class Build : UnrealBuild, IPackageTargets, IUraniumCefTargets
 {
     /// Support plugins are available for:
     ///   - JetBrains ReSharper        https://nuke.build/resharper
@@ -24,21 +10,4 @@ class Build : ProjectTargets
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
     public static int Main() => Execute<Build>(x => x.BuildEditor);
-
-    [Solution] readonly Solution Solution;
-    
-    public override string UnrealVersion { get; set; } = "4.26.0";
-    
-    public Target NewHandler => _ => _
-        .Description("Create new CEF - Uranium handler pair")
-        .Requires(() => Name)
-        .Executes(() => 
-            Name.ForEach(n => 
-                new HandlerGenerator().Generate(
-                    TemplatesPath,
-                    (AbsolutePath) Environment.CurrentDirectory,
-                    new(n)
-                )
-            )
-        );
 }

@@ -1,6 +1,6 @@
 using Nuke.Unreal.BoilerplateGenerators;
 
-public class HandlerGenerator : SourceFileGenerator
+public class CefHandlerGenerator : SourceFileGenerator
 {
-    public override string TemplateSubfolder => "UrCefHandler";
+    public override string TemplateSubfolder => "NativeCefHandler";
 }

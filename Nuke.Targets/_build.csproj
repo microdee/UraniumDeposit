@@ -10,4 +10,12 @@
     <NukeTelemetryVersion>1</NukeTelemetryVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="md.Nuke.Unreal" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UraniumDeposit\Plugins\Uranium\Uranium\Source\CefBackend\Nuke.Targets\Nuke.Uranium.Cef.csproj" />
+  </ItemGroup>
+
 </Project>
